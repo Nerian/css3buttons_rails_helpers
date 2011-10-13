@@ -1,0 +1,299 @@
+// ------------------------------------------
+// CSS3 GITHUB BUTTONS (Nicolas Gallagher)
+// Licensed under Unlicense 
+// http://github.com/necolas/css3-github-buttons
+// ------------------------------------------
+
+@mixin css3buttons-button {
+    position: relative;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 1px solid #d4d4d4;
+    margin: 0;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #fff;
+    font:11px/normal sans-serif;
+    color: #333;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    background-color: #ececec;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+    background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+    background-image: -o-linear-gradient(#f4f4f4, #ececec);
+    background-image: linear-gradient(#f4f4f4, #ececec);
+    -webkit-background-clip: padding;
+    -moz-background-clip: padding;
+    -o-background-clip: padding-box;
+    /*background-clip: padding-box;*/ /* commented out due to Opera 11.10 bug */
+    -webkit-border-radius: 0.2em;
+    -moz-border-radius: 0.2em;
+    border-radius: 0.2em;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        border-color: #3072b3;
+        border-bottom-color: #2a65a0;
+        text-decoration: none; 
+        text-shadow: -1px -1px 0 rgba(0,0,0,0.3); 
+        color: #fff; 
+        background-color: #3C8DDE;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
+        background-image: -moz-linear-gradient(#599bdc, #3072b3);
+        background-image: -o-linear-gradient(#599bdc, #3072b3);
+        background-image: linear-gradient(#599bdc, #3072b3);
+    }
+
+    &:active,
+    &.active {
+        border-color: #2a65a0;
+        border-bottom-color: #3884CF;
+        background-color: #3072b3;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3072b3), to(#599bdc));
+        background-image: -moz-linear-gradient(#3072b3, #599bdc);
+        background-image: -o-linear-gradient(#3072b3, #599bdc);
+        background-image: linear-gradient(#3072b3, #599bdc);
+    }
+
+    &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+}
+
+@mixin css3buttons-icon($x, $y, $active_x, $active_y) {
+    @if $y != $active_y {
+      @warn "Are you sure that css3buttons-icon mixin included with different vertical offset for normal and active icon?";
+    }
+    &:before {
+        content: "";
+        position: relative;
+        top: 1px;
+        float:left;
+        width: 12px;
+        height: 12px;
+        margin: 0 0.75em 0 -0.25em;
+        background: url(icons.png) 0 99px no-repeat;
+        background-position: $x $y;
+    }
+
+    &:hover:before,
+    &:focus:before,
+    &:active:before {
+        background-position: $active_x $active_y;
+    }
+}
+
+@mixin css3buttons-icon-arrowup    { @include css3buttons-icon(0, 0, -12px, 0); }
+@mixin css3buttons-icon-arrowdown  { @include css3buttons-icon(0, -12px, -12px, -12px); }
+@mixin css3buttons-icon-arrowleft  { @include css3buttons-icon(0, -24px, -12px, -24px); }
+@mixin css3buttons-icon-arrowright { 
+    @include css3buttons-icon(0, -36px, -12px, -36px); 
+    &:before {
+        float: right;
+        margin: 0 -0.25em 0 0.5em;
+    }
+}
+@mixin css3buttons-icon-approve   { @include css3buttons-icon(0, -48px, -12px, -48px); }
+@mixin css3buttons-icon-add       { @include css3buttons-icon(0, -288px, -12px, -288px); }
+@mixin css3buttons-icon-remove    { @include css3buttons-icon(0, -60px, -12px, -60px); }
+@mixin css3buttons-icon-log       { @include css3buttons-icon(0, -72px, -12px, -72px); }
+@mixin css3buttons-icon-calendar  { @include css3buttons-icon(0, -84px, -12px, -84px); }
+@mixin css3buttons-icon-chat      { @include css3buttons-icon(0, -96px, -12px, -96px); }
+@mixin css3buttons-icon-clock     { @include css3buttons-icon(0, -108px, -12px, -108px); }
+@mixin css3buttons-icon-settings  { @include css3buttons-icon(0, -120px, -12px, -120px); }
+@mixin css3buttons-icon-comment   { @include css3buttons-icon(0, -132px, -12px, -132px); }
+@mixin css3buttons-icon-fork      { @include css3buttons-icon(0, -144px, -12px, -144px); }
+@mixin css3buttons-icon-like      { @include css3buttons-icon(0, -156px, -12px, -156px); }
+@mixin css3buttons-icon-favorite  { @include css3buttons-icon(0, -348px, -12px, -348px); }
+@mixin css3buttons-icon-home      { @include css3buttons-icon(0, -168px, -12px, -168px); }
+@mixin css3buttons-icon-key       { @include css3buttons-icon(0, -180px, -12px, -180px); }
+@mixin css3buttons-icon-lock      { @include css3buttons-icon(0, -192px, -12px, -192px); }
+@mixin css3buttons-icon-unlock    { @include css3buttons-icon(0, -204px, -12px, -204px); }
+@mixin css3buttons-icon-loop      { @include css3buttons-icon(0, -216px, -12px, -216px); }
+@mixin css3buttons-icon-search    { @include css3buttons-icon(0, -228px, -12px, -228px); }
+@mixin css3buttons-icon-mail      { @include css3buttons-icon(0, -240px, -12px, -240px); }
+@mixin css3buttons-icon-move      { @include css3buttons-icon(0, -252px, -12px, -252px); }
+@mixin css3buttons-icon-edit      { @include css3buttons-icon(0, -264px, -12px, -264px); }
+@mixin css3buttons-icon-pin       { @include css3buttons-icon(0, -276px, -12px, -276px); }
+@mixin css3buttons-icon-reload    { @include css3buttons-icon(0, -300px, -12px, -300px); }
+@mixin css3buttons-icon-rss       { @include css3buttons-icon(0, -312px, -12px, -312px); }
+@mixin css3buttons-icon-tag       { @include css3buttons-icon(0, -324px, -12px, -324px); }
+@mixin css3buttons-icon-trash     { @include css3buttons-icon(0, -336px, -12px, -336px); }
+@mixin css3buttons-icon-user      { @include css3buttons-icon(0, -360px, -12px, -360px); }
+
+@mixin css3buttons-primary {
+    font-weight: bold;
+}
+
+@mixin css3buttons-danger {
+    color: #900;
+
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: #b53f3a;
+        border-bottom-color: #a0302a;
+        color: #fff;
+        background-color: #dc5f59;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dc5f59), to(#b33630));
+        background-image: -moz-linear-gradient(#dc5f59, #b33630);
+        background-image: -o-linear-gradient(#dc5f59, #b33630);
+        background-image: linear-gradient(#dc5f59, #b33630);
+    }
+
+    &:active,
+    &.active {
+        border-color: #a0302a;
+        border-bottom-color: #bf4843;
+        background-color: #b33630;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b33630), to(#dc5f59));
+        background-image: -moz-linear-gradient(#b33630, #dc5f59);
+        background-image: -o-linear-gradient(#b33630, #dc5f59);
+        background-image: linear-gradient(#b33630, #dc5f59);
+    }
+}
+
+@mixin css3buttons-safe {
+    color: #fff;
+    border-color: #6b9640;
+    border-bottom-color: #747d4a;
+    text-decoration: none; 
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); 
+    background-color: #7bac4c;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#aed36c), to(#7bac4c));
+    background-image: -moz-linear-gradient(#aed36c, #7bac4c);
+    background-image: -o-linear-gradient(#aed36c, #7bac4c);
+    background-image: linear-gradient(#aed36c, #7bac4c);
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: #a2c581;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bddb89), to(#96bd71));
+        background-image: -moz-linear-gradient(#bddb89, #96bd71);
+        background-image: -o-linear-gradient(#bddb89, #96bd71);
+        background-image: linear-gradient(#bddb89, #96bd71);
+    }
+
+    &:active,
+    &.active {
+        background-color: #a2c581;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#96bd71), to(#bddb89));
+        background-image: -moz-linear-gradient(#96bd71, #bddb89);
+        background-image: -o-linear-gradient(#96bd71, #bddb89);
+        background-image: linear-gradient(#96bd71, #bddb89);
+    }
+}
+
+@mixin css3buttons-pill {
+    -webkit-border-radius: 50em;
+    -moz-border-radius: 50em;
+    border-radius: 50em;
+}
+
+@mixin css3buttons-disable {
+    opacity: 0.5;
+}
+
+@mixin css3buttons-big($button_with_icon_selector) {
+    font-size: 14px;
+
+    #{$button_with_icon_selector} {
+        &:before {
+            top: 0;
+        }
+    }
+}
+
+@mixin css3buttons-button-group($button_selector, $button_group_selector) {
+    #{$button_group_selector} {
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        /* IE hacks */
+        zoom: 1;
+        *display: inline;
+
+        li {
+            float: left;
+            padding: 0;
+            margin: 0;
+        }
+
+        #{$button_selector} {
+            float: left;
+            margin-left: -1px;
+        }
+
+        > #{$button_selector}:not(:first-child):not(:last-child),
+        li:not(:first-child):not(:last-child) #{$button_selector} {
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+
+        > #{$button_selector}:first-child,
+        li:first-child #{$button_selector} {
+            margin-left: 0;
+            -webkit-border-top-right-radius: 0;
+            -webkit-border-bottom-right-radius: 0;
+            -moz-border-radius-topright: 0;
+            -moz-border-radius-bottomright: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        > #{$button_selector}:last-child,
+        li:last-child > #{$button_selector} {
+            -webkit-border-top-left-radius: 0;
+            -webkit-border-bottom-left-radius: 0;
+            -moz-border-radius-topleft: 0;
+            -moz-border-radius-bottomleft: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    #{$button_selector} + #{$button_selector},
+    #{$button_selector} + #{$button_group_selector},
+    #{$button_group_selector} + #{$button_selector},
+    #{$button_group_selector} + #{$button_group_selector} {
+        margin-left: 15px;
+    }
+}
+
+@mixin css3buttons-minor-button-group($button_selector, $minor_button_group_selector, $button_with_icon_selector) {
+    #{$minor_button_group_selector} {
+        #{$button_selector} {
+            border: 1px solid #d4d4d4; 
+            text-shadow: none;
+            background-image: none;
+            background-color: #fff;
+
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: #599bdc;
+            }
+
+            &:active,
+            &.active {
+                background-color: #3072b3;
+            }
+        }
+
+        #{$button_with_icon_selector} {
+            &:before {
+                opacity: 0.8;
+            }
+        }
+    }
+}
