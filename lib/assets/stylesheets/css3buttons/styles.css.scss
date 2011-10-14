@@ -1,6 +1,6 @@
 /* ------------------------------------------
 CSS3 GITHUB BUTTONS (Nicolas Gallagher)
-Licensed under Unlicense 
+Licensed under Unlicense
 http://github.com/necolas/css3-github-buttons
 ------------------------------------------ */
 
@@ -8,7 +8,7 @@ http://github.com/necolas/css3-github-buttons
 
 /* ------------------------------------------------------------------------------------------------------------- BUTTON */
 
-.button { 
+.button {
     @include css3buttons-button;
 }
 
@@ -50,50 +50,98 @@ http://github.com/necolas/css3-github-buttons
 
 /* ............................................................................................................. Primary */
 
-.button.primary {
-    @include css3buttons-primary;
-}
+.button.primary { @include css3buttons-primary; }
 
 /* ............................................................................................................. Danger */
 
-.button.danger {
-    @include css3buttons-danger;
-}
+.button.danger { @include css3buttons-danger; }
 
 /* ............................................................................................................. safe */
 
-.button.safe {
-    @include css3buttons-safe;
-}
+.button.safe { @include css3buttons-safe; }
 
 /* ............................................................................................................. Pill */
 
-.button.pill {
-    @include css3buttons-pill;
-}
+.button.pill { @include css3buttons-pill; }
 
 /* ............................................................................................................. Disable */
 
-.button.disable {
-    @include css3buttons-disable;
-}
+.button.disable { @include css3buttons-disable; }
 
 /* ............................................................................................................. Big */
 
 .button.big {
-    @include css3buttons-big(".button.icon");
+    @include css3buttons-big;
+
+    &.icon:before {
+        top: 0;
+    }
 }
 
 /* ------------------------------------------------------------------------------------------------------------- BUTTON GROUPS */
 
 /* ............................................................................................................. Standard */
 
-@include css3buttons-button-group(".button", ".button-group");
+.button-group {
+    @include css3buttons-button-group;
+
+    li {
+        float: left;
+        padding: 0;
+        margin: 0;
+    }
+
+    .button {
+        @include css3buttons-button-in-group;
+    }
+
+    > .button:not(:first-child):not(:last-child),
+    li:not(:first-child):not(:last-child) .button {
+        @include css3buttons-button-in-middle-of-group;
+    }
+
+    > .button:first-child,
+    li:first-child .button {
+        @include css3buttons-button-in-begin-of-group;
+    }
+
+    > .button:last-child,
+    li:last-child > .button {
+        @include css3buttons-button-in-end-of-group;
+    }
+}
+
+.button + .button,
+.button + .button-group,
+.button-group + .button,
+.button-group + .button-group {
+    margin-left: 15px;
+}
 
 /* ............................................................................................................. Minor */
 
 .button-group.minor-group {
-    @include css3buttons-minor-button-group(".button", ".button-group.minor-group", ".button.icon");
+    .button {
+        border: 1px solid #d4d4d4;
+        text-shadow: none;
+        background-image: none;
+        background-color: #fff;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: #599bdc;
+        }
+
+        &:active,
+        &.active {
+            background-color: #3072b3;
+        }
+
+        &.icon:before {
+            opacity: 0.8;
+        }
+    }
 }
 
 /* ------------------------------------------------------------------------------------------------------------- BUTTON CONTAINER */

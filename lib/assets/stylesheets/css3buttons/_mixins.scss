@@ -202,98 +202,46 @@
     opacity: 0.5;
 }
 
-@mixin css3buttons-big($button_with_icon_selector) {
+@mixin css3buttons-big {
     font-size: 14px;
-
-    #{$button_with_icon_selector} {
-        &:before {
-            top: 0;
-        }
-    }
 }
 
-@mixin css3buttons-button-group($button_selector, $button_group_selector) {
-    #{$button_group_selector} {
-        display: inline-block;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        /* IE hacks */
-        zoom: 1;
-        *display: inline;
-
-        li {
-            float: left;
-            padding: 0;
-            margin: 0;
-        }
-
-        #{$button_selector} {
-            float: left;
-            margin-left: -1px;
-        }
-
-        > #{$button_selector}:not(:first-child):not(:last-child),
-        li:not(:first-child):not(:last-child) #{$button_selector} {
-            -webkit-border-radius: 0;
-            -moz-border-radius: 0;
-            border-radius: 0;
-        }
-
-        > #{$button_selector}:first-child,
-        li:first-child #{$button_selector} {
-            margin-left: 0;
-            -webkit-border-top-right-radius: 0;
-            -webkit-border-bottom-right-radius: 0;
-            -moz-border-radius-topright: 0;
-            -moz-border-radius-bottomright: 0;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
-        > #{$button_selector}:last-child,
-        li:last-child > #{$button_selector} {
-            -webkit-border-top-left-radius: 0;
-            -webkit-border-bottom-left-radius: 0;
-            -moz-border-radius-topleft: 0;
-            -moz-border-radius-bottomleft: 0;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-    }
-
-    #{$button_selector} + #{$button_selector},
-    #{$button_selector} + #{$button_group_selector},
-    #{$button_group_selector} + #{$button_selector},
-    #{$button_group_selector} + #{$button_group_selector} {
-        margin-left: 15px;
-    }
+@mixin css3buttons-button-group {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
 }
 
-@mixin css3buttons-minor-button-group($button_selector, $minor_button_group_selector, $button_with_icon_selector) {
-    #{$minor_button_group_selector} {
-        #{$button_selector} {
-            border: 1px solid #d4d4d4; 
-            text-shadow: none;
-            background-image: none;
-            background-color: #fff;
+@mixin css3buttons-button-in-group {
+    float: left;
+    margin-left: -1px;
+}
 
-            &:hover,
-            &:focus,
-            &:active {
-                background-color: #599bdc;
-            }
+@mixin css3buttons-button-in-begin-of-group {
+    margin-left: 0;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -moz-border-radius-topright: 0;
+    -moz-border-radius-bottomright: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
 
-            &:active,
-            &.active {
-                background-color: #3072b3;
-            }
-        }
+@mixin css3buttons-button-in-middle-of-group {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
 
-        #{$button_with_icon_selector} {
-            &:before {
-                opacity: 0.8;
-            }
-        }
-    }
+@mixin css3buttons-button-in-end-of-group {
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    -moz-border-radius-bottomleft: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
